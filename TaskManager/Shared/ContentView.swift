@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var allTasks: [AppCore.Task] = AppCore.Task.examples()
 
     var body: some View {
-        PlatformRootView(userCreatedGroups: userCreatedGroups, allTasks: allTasks)
+        PlatformRootView(userCreatedGroups: $userCreatedGroups, allTasks: allTasks)
     }
 }
 

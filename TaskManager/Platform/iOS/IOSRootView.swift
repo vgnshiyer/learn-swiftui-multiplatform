@@ -9,14 +9,14 @@ import SwiftUI
 import AppCore
 
 struct IOSRootView: View {
-    let userCreatedGroups: [TaskGroup]
+    @Binding var userCreatedGroups: [TaskGroup]
     let allTasks: [AppCore.Task]
 
     var body: some View {
-        TabBarView(userCreatedGroups: userCreatedGroups, allTasks: allTasks)
+        TabBarView(userCreatedGroups: $userCreatedGroups, allTasks: allTasks)
     }
 }
 
 #Preview {
-    IOSRootView(userCreatedGroups: TaskGroup.examples(), allTasks: AppCore.Task.examples())
+    IOSRootView(userCreatedGroups: .constant(TaskGroup.examples()), allTasks: AppCore.Task.examples())
 }

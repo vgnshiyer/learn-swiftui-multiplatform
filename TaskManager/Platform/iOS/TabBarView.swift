@@ -9,7 +9,7 @@ import SwiftUI
 import AppCore
 
 struct TabBarView: View {
-    let userCreatedGroups: [TaskGroup]
+    @Binding var userCreatedGroups: [TaskGroup]
     let allTasks: [AppCore.Task]
 
     var body: some View {
@@ -29,7 +29,7 @@ struct TabBarView: View {
                     Label(TaskSection.upcoming.displayName, systemImage: TaskSection.upcoming.iconName)
                 }
 
-            GroupsNavigationView(userCreatedGroups: userCreatedGroups)
+            GroupsNavigationView(userCreatedGroups: $userCreatedGroups)
                 .tabItem {
                     Label("Groups", systemImage: "folder")
                 }
@@ -38,5 +38,5 @@ struct TabBarView: View {
 }
 
 #Preview {
-    TabBarView(userCreatedGroups: TaskGroup.examples(), allTasks: AppCore.Task.examples())
+    TabBarView(userCreatedGroups: .constant(TaskGroup.examples()), allTasks: AppCore.Task.examples())
 }

@@ -9,16 +9,26 @@ import SwiftUI
 import AppCore
 
 struct GroupsNavigationView: View {
-    let userCreatedGroups: [TaskGroup]
+    @Binding var userCreatedGroups: [TaskGroup]
 
     var body: some View {
         NavigationStack {
-            List(userCreatedGroups) { group in
-                NavigationLink(value: group) {
-                    Label(group.title, systemImage: "folder")
+            List {
+                ForEach($userCreatedGroups) { $group in
+                    GroupRow(group: $group)
                 }
             }
             .navigationTitle("Groups")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        let newGroup = TaskGroup(title: "New Group")
+                        userCreatedGroups.append(newGroup)
+                    } label: {
+                        Label("Create Group", systemImage: "plus")
+                    }
+                }
+            }
             .navigationDestination(for: TaskGroup.self) { group in
                 TaskListView(title: group.title, tasks: group.tasks)
                     .navigationTitle(group.title)
@@ -28,5 +38,28 @@ struct GroupsNavigationView: View {
 }
 
 #Preview {
-    GroupsNavigationView(userCreatedGroups: TaskGroup.examples())
+    GroupsNavigationView(userCreatedGroups: .constant(TaskGroup.examples()))
+}
+
+private struct GroupRow: View {
+    @Binding var group: TaskGroup
+    @State private var isRenaming = false
+
+    var body: some View {
+        NavigationLink(value: group) {
+            Label(group.title, systemImage: "folder")
+        }
+        .swipeActions(edge: .trailing) {
+            Button {
+                isRenaming = true
+            } label: {
+                Label("Rename", systemImage: "pencil")
+            }
+            .tint(.blue)
+        }
+        .alert("Rename Group", isPresented: $isRenaming) {
+            TextField("Group name", text: $group.title)
+            Button("Done", role: .cancel) {}
+        }
+    }
 }

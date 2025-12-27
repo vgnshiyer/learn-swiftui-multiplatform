@@ -9,13 +9,13 @@ import SwiftUI
 import AppCore
 
 struct MacOSRootView: View {
-    let userCreatedGroups: [TaskGroup]
+    @Binding var userCreatedGroups: [TaskGroup]
     let allTasks: [AppCore.Task]
     @State private var selection = TaskSection.all
 
     var body: some View {
         NavigationSplitView {
-            SidebarView(userCreatedGroups: userCreatedGroups, selection: $selection)
+            SidebarView(userCreatedGroups: $userCreatedGroups, selection: $selection)
         } detail: {
             switch selection {
             case .all:
@@ -32,5 +32,5 @@ struct MacOSRootView: View {
 }
 
 #Preview {
-    MacOSRootView(userCreatedGroups: TaskGroup.examples(), allTasks: AppCore.Task.examples())
+    MacOSRootView(userCreatedGroups: .constant(TaskGroup.examples()), allTasks: AppCore.Task.examples())
 }
