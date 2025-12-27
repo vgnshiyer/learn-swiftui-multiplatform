@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import AppCore
 
 struct ContentView: View {
+    @State private var userCreatedGroups: [TaskGroup] = TaskGroup.examples()
+    @State private var allTasks: [AppCore.Task] = AppCore.Task.examples()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+#if os(macOS)
+        MacOSRootView(userCreatedGroups: userCreatedGroups, allTasks: allTasks)
+#else
+        IOSRootView(userCreatedGroups: userCreatedGroups, allTasks: allTasks)
+#endif
     }
 }
 

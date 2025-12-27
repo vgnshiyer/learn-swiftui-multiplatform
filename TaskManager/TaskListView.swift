@@ -10,7 +10,7 @@ import AppCore
 
 struct TaskListView: View {
     let title: String
-    let tasks: [Task]
+    let tasks: [AppCore.Task]
     
     var body: some View {
         List (tasks) { task in

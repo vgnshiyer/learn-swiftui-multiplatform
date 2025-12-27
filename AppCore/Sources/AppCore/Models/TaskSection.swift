@@ -26,10 +26,23 @@ public enum TaskSection: Identifiable, CaseIterable, Hashable {
         }
     }
 
+    public var displayName: String {
+        switch self {
+        case .all:
+            "All"
+        case .done:
+            "Done"
+        case .upcoming:
+            "Upcoming"
+        case .list(let taskGroup):
+            taskGroup.title
+        }
+    }
+
     public var iconName: String {
         switch self {
         case .all:
-            "start"
+            "star"
         case .done:
             "checkmark.circle"
         case .upcoming:
