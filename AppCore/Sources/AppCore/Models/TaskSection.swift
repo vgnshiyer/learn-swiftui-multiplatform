@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum TaskSection: Identifiable, CaseIterable, Hashable {
+public enum TaskSection: Identifiable, CaseIterable, Hashable {
     case all
     case done
     case upcoming
     case list(TaskGroup)
-    
-    var id: String {
+
+    public var id: String {
         switch self {
         case .all:
             "All"
@@ -25,8 +25,8 @@ enum TaskSection: Identifiable, CaseIterable, Hashable {
             taskGroup.title
         }
     }
-    
-    var iconName: String {
+
+    public var iconName: String {
         switch self {
         case .all:
             "start"
@@ -38,12 +38,12 @@ enum TaskSection: Identifiable, CaseIterable, Hashable {
             "folder"
         }
     }
-    
-    static var allCases: [TaskSection] {
+
+    public static var allCases: [TaskSection] {
         [.all, .done, .upcoming]
     }
-    
-    static func == (lhs: TaskSection, rhs: TaskSection) -> Bool {
+
+    public static func == (lhs: TaskSection, rhs: TaskSection) -> Bool {
         lhs.id == rhs.id
     }
 }

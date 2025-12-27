@@ -1,25 +1,31 @@
 import Foundation
 
-struct Task: Identifiable, Hashable {
-    
-    let id = UUID()
-    var title: String
-    var isCompleted: Bool
-    var dueDate: Date
-    var details: String?
-    
-    init(title: String, isCompleted: Bool = false, dueDate: Date = Date(), details: String? = nil) {
+public struct Task: Identifiable, Hashable {
+    public let id: UUID
+    public var title: String
+    public var isCompleted: Bool
+    public var dueDate: Date
+    public var details: String?
+
+    public init(
+        id: UUID = UUID(),
+        title: String,
+        isCompleted: Bool = false,
+        dueDate: Date = Date(),
+        details: String? = nil
+    ) {
+        self.id = id
         self.title = title
         self.isCompleted = isCompleted
         self.dueDate = dueDate
         self.details = details
     }
-    
-    static func example() -> Task {
+
+    public static func example() -> Task {
         Task(title: "Buy milk", dueDate: Calendar.current.date(byAdding: .day, value: 2, to: Date())!)
     }
-    
-    static func examples() -> [Task] {
+
+    public static func examples() -> [Task] {
         [
            Task(title: "Here’s to the crazy ones"),
            Task(title: "the misfits, the rebels, the troublemakers", isCompleted: true),
@@ -33,7 +39,5 @@ struct Task: Identifiable, Hashable {
            Task(title: "because the ones who are crazy enough to think that they can change the world"),
            Task(title:  "are the ones who do.")
        ]
-        
     }
-    
 }

@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5A8D49B72F0050A10037D991 /* AppCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5A8D49B62F0050A10037D991 /* AppCore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		5A8D49992F004EAF0037D991 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8D49B72F0050A10037D991 /* AppCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +77,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A2BF7792F00585A009962D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5A8D49822F004EAC0037D991 = {
 			isa = PBXGroup;
 			children = (
 				5A8D498D2F004EAC0037D991 /* TaskManager */,
 				5A8D499B2F004EAF0037D991 /* TaskManagerTests */,
 				5A8D49A52F004EAF0037D991 /* TaskManagerUITests */,
+				5A2BF7792F00585A009962D3 /* Frameworks */,
 				5A8D498C2F004EAC0037D991 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +125,7 @@
 			);
 			name = TaskManager;
 			packageProductDependencies = (
+				5A8D49B62F0050A10037D991 /* AppCore */,
 			);
 			productName = TaskManager;
 			productReference = 5A8D498B2F004EAC0037D991 /* TaskManager.app */;
@@ -627,6 +641,13 @@
 			relativePath = AppCore;
 		};
 /* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A8D49B62F0050A10037D991 /* AppCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5A8D49832F004EAC0037D991 /* Project object */;
 }
