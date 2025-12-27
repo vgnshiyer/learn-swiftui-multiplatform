@@ -13,11 +13,7 @@ struct ContentView: View {
     @State private var allTasks: [AppCore.Task] = AppCore.Task.examples()
 
     var body: some View {
-#if os(macOS)
-        MacOSRootView(userCreatedGroups: userCreatedGroups, allTasks: allTasks)
-#else
-        IOSRootView(userCreatedGroups: userCreatedGroups, allTasks: allTasks)
-#endif
+        PlatformRootView(userCreatedGroups: userCreatedGroups, allTasks: allTasks)
     }
 }
 

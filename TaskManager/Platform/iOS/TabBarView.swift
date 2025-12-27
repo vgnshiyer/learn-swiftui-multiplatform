@@ -5,7 +5,6 @@
 //  Created by Vignesh Iyer on 12/27/25.
 //
 
-#if os(iOS)
 import SwiftUI
 import AppCore
 
@@ -41,4 +40,3 @@ struct TabBarView: View {
 #Preview {
     TabBarView(userCreatedGroups: TaskGroup.examples(), allTasks: AppCore.Task.examples())
 }
-#endif

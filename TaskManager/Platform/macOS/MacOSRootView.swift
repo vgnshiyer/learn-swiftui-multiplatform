@@ -5,7 +5,6 @@
 //  Created by Vignesh Iyer on 12/27/25.
 //
 
-#if os(macOS)
 import SwiftUI
 import AppCore
 
@@ -35,4 +34,3 @@ struct MacOSRootView: View {
 #Preview {
     MacOSRootView(userCreatedGroups: TaskGroup.examples(), allTasks: AppCore.Task.examples())
 }
-#endif

@@ -5,7 +5,6 @@
 //  Created by Vignesh Iyer on 12/27/25.
 //
 
-#if os(macOS)
 import SwiftUI
 import AppCore
 
@@ -34,4 +33,3 @@ struct SidebarView: View {
     SidebarView(userCreatedGroups: TaskGroup.examples(), selection: .constant(.all))
         .listStyle(.sidebar)
 }
-#endif

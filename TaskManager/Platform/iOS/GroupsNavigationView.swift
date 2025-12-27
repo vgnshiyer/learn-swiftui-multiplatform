@@ -5,7 +5,6 @@
 //  Created by Vignesh Iyer on 12/27/25.
 //
 
-#if os(iOS)
 import SwiftUI
 import AppCore
 
@@ -31,4 +30,3 @@ struct GroupsNavigationView: View {
 #Preview {
     GroupsNavigationView(userCreatedGroups: TaskGroup.examples())
 }
-#endif

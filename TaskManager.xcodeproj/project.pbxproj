@@ -414,6 +414,22 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphoneos*]" = (
+					MacOSRootView.swift,
+					SidebarView.swift,
+					"PlatformRootView+macOS.swift",
+				);
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphonesimulator*]" = (
+					MacOSRootView.swift,
+					SidebarView.swift,
+					"PlatformRootView+macOS.swift",
+				);
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=macosx*]" = (
+					IOSRootView.swift,
+					TabBarView.swift,
+					GroupsNavigationView.swift,
+					"PlatformRootView+iOS.swift",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -459,6 +475,22 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphoneos*]" = (
+					MacOSRootView.swift,
+					SidebarView.swift,
+					"PlatformRootView+macOS.swift",
+				);
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=iphonesimulator*]" = (
+					MacOSRootView.swift,
+					SidebarView.swift,
+					"PlatformRootView+macOS.swift",
+				);
+				"EXCLUDED_SOURCE_FILE_NAMES[sdk=macosx*]" = (
+					IOSRootView.swift,
+					TabBarView.swift,
+					GroupsNavigationView.swift,
+					"PlatformRootView+iOS.swift",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
