@@ -10,24 +10,33 @@ import AppCore
 
 struct TabBarView: View {
     @Binding var userCreatedGroups: [TaskGroup]
-    let allTasks: [AppCore.Task]
+    @Binding var allTasks: [AppCore.Task]
 
     var body: some View {
         TabView {
-            TaskListView(title: TaskSection.all.displayName, tasks: allTasks)
-                .tabItem {
-                    Label(TaskSection.all.displayName, systemImage: TaskSection.all.iconName)
-                }
+            NavigationStack {
+                TaskListView(title: TaskSection.all.displayName, tasks: $allTasks)
+                    .navigationTitle(TaskSection.all.displayName)
+            }
+            .tabItem {
+                Label(TaskSection.all.displayName, systemImage: TaskSection.all.iconName)
+            }
 
-            TaskListView(title: TaskSection.done.displayName, tasks: allTasks.filter({ $0.isCompleted }))
-                .tabItem {
-                    Label(TaskSection.done.displayName, systemImage: TaskSection.done.iconName)
-                }
+            NavigationStack {
+                StaticTaskListView(title: TaskSection.done.displayName, tasks: allTasks.filter({ $0.isCompleted }))
+                    .navigationTitle(TaskSection.done.displayName)
+            }
+            .tabItem {
+                Label(TaskSection.done.displayName, systemImage: TaskSection.done.iconName)
+            }
 
-            TaskListView(title: TaskSection.upcoming.displayName, tasks: allTasks.filter({ !$0.isCompleted }))
-                .tabItem {
-                    Label(TaskSection.upcoming.displayName, systemImage: TaskSection.upcoming.iconName)
-                }
+            NavigationStack {
+                StaticTaskListView(title: TaskSection.upcoming.displayName, tasks: allTasks.filter({ !$0.isCompleted }))
+                    .navigationTitle(TaskSection.upcoming.displayName)
+            }
+            .tabItem {
+                Label(TaskSection.upcoming.displayName, systemImage: TaskSection.upcoming.iconName)
+            }
 
             GroupsNavigationView(userCreatedGroups: $userCreatedGroups)
                 .tabItem {
@@ -38,5 +47,5 @@ struct TabBarView: View {
 }
 
 #Preview {
-    TabBarView(userCreatedGroups: .constant(TaskGroup.examples()), allTasks: AppCore.Task.examples())
+    TabBarView(userCreatedGroups: .constant(TaskGroup.examples()), allTasks: .constant(AppCore.Task.examples()))
 }

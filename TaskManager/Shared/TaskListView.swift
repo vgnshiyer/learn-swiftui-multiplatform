@@ -10,18 +10,25 @@ import AppCore
 
 struct TaskListView: View {
     let title: String
-    let tasks: [AppCore.Task]
+    @Binding var tasks: [AppCore.Task]
     
     var body: some View {
-        List (tasks) { task in
-            HStack {
-                Image(systemName: task.isCompleted ? "largecircle.fill.circle" : "circle")
-                Text(task.title)
+        List($tasks) { $task in
+            TaskView(task: $task)
+        }
+        .toolbar {
+            Button {
+                let newTask = AppCore.Task(title: "New Task")
+                tasks.append(newTask)
+            } label: {
+                Label("Add New Task", systemImage: "plus")
             }
         }
     }
 }
 
 #Preview {
-    TaskListView(title: "All", tasks: AppCore.Task.examples())
+    TaskListView(title: "All", tasks: .constant(AppCore.Task.examples()))
 }
+
+

@@ -30,7 +30,7 @@ struct GroupsNavigationView: View {
                 }
             }
             .navigationDestination(for: TaskGroup.self) { group in
-                TaskListView(title: group.title, tasks: group.tasks)
+                StaticTaskListView(title: group.title, tasks: group.tasks)
                     .navigationTitle(group.title)
             }
         }

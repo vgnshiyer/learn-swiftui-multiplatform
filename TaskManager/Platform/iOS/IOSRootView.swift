@@ -10,13 +10,13 @@ import AppCore
 
 struct IOSRootView: View {
     @Binding var userCreatedGroups: [TaskGroup]
-    let allTasks: [AppCore.Task]
+    @Binding var allTasks: [AppCore.Task]
 
     var body: some View {
-        TabBarView(userCreatedGroups: $userCreatedGroups, allTasks: allTasks)
+        TabBarView(userCreatedGroups: $userCreatedGroups, allTasks: $allTasks)
     }
 }
 
 #Preview {
-    IOSRootView(userCreatedGroups: .constant(TaskGroup.examples()), allTasks: AppCore.Task.examples())
+    IOSRootView(userCreatedGroups: .constant(TaskGroup.examples()), allTasks: .constant(AppCore.Task.examples()))
 }

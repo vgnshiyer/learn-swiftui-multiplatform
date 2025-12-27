@@ -10,7 +10,7 @@ import AppCore
 
 struct MacOSRootView: View {
     @Binding var userCreatedGroups: [TaskGroup]
-    let allTasks: [AppCore.Task]
+    @Binding var allTasks: [AppCore.Task]
     @State private var selection = TaskSection.all
 
     var body: some View {
@@ -19,18 +19,18 @@ struct MacOSRootView: View {
         } detail: {
             switch selection {
             case .all:
-                TaskListView(title: "All", tasks: allTasks)
+                TaskListView(title: "All", tasks: $allTasks)
             case .done:
-                TaskListView(title: "Done", tasks: allTasks.filter({ $0.isCompleted }))
+                StaticTaskListView(title: "Done", tasks: allTasks.filter({ $0.isCompleted }))
             case .upcoming:
-                TaskListView(title: "Upcoming", tasks: allTasks.filter({ !$0.isCompleted }))
+                StaticTaskListView(title: "Upcoming", tasks: allTasks.filter({ !$0.isCompleted }))
             case .list(let group):
-                TaskListView(title: group.title, tasks: group.tasks)
+                StaticTaskListView(title: group.title, tasks: group.tasks)
             }
         }
     }
 }
 
 #Preview {
-    MacOSRootView(userCreatedGroups: .constant(TaskGroup.examples()), allTasks: AppCore.Task.examples())
+    MacOSRootView(userCreatedGroups: .constant(TaskGroup.examples()), allTasks: .constant(AppCore.Task.examples()))
 }
